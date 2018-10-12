@@ -78,6 +78,7 @@ module Postal
           :date => message.headers['date']&.last,
           :in_reply_to => message.headers['in-reply-to']&.last,
           :references => message.headers['references']&.last,
+          :list_unsubscribe => message.headers['list-unsubscribe']&.last,
           :html_body => message.html_body,
           :attachment_quantity => message.attachments.size
         }
