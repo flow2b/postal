@@ -151,11 +151,12 @@ class OutgoingMessagePrototype
   def raw_message
     @raw_message ||= begin
       mail = Mail.new
+      mail.to = self.to_addresses.join(', ') if self.to_addresses.present?
+      mail.cc = self.cc_addresses.join(', ') if self.cc_addresses.present?
+      mail.message_id = "<#{@message_id}>"
       if @custom_headers.is_a?(Hash)
         @custom_headers.each { |key, value| mail[key.to_s] = value.to_s }
       end
-      mail.to = self.to_addresses.join(', ') if self.to_addresses.present?
-      mail.cc = self.cc_addresses.join(', ') if self.cc_addresses.present?
       mail.from = @from
       mail.sender = @sender
       mail.subject = @subject
@@ -180,7 +181,6 @@ class OutgoingMessagePrototype
         }
       end
       mail.header['Received'] = "from #{@source_type} (#{self.resolved_hostname} [#{@ip}]) by Postal with HTTP; #{Time.now.utc.rfc2822.to_s}"
-      mail.message_id = "<#{@message_id}>"
       mail.to_s
     end
   end
