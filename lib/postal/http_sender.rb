@@ -79,6 +79,9 @@ module Postal
           :in_reply_to => message.headers['in-reply-to']&.last,
           :references => message.headers['references']&.last,
           :list_unsubscribe => message.headers['list-unsubscribe']&.last,
+          :flow2b_workspace => message.headers['x-flow2b-workspace']&.last,
+          :flow2b_entity => message.headers['x-flow2b-entity']&.last,
+          :flow2b_id => message.headers['x-flow2b-id']&.last,
           :html_body => message.html_body,
           :attachment_quantity => message.attachments.size
         }
