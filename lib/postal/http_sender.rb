@@ -82,6 +82,8 @@ module Postal
           :flow2b_workspace => message.headers['x-flow2b-workspace']&.last,
           :flow2b_entity => message.headers['x-flow2b-entity']&.last,
           :flow2b_id => message.headers['x-flow2b-id']&.last,
+          :flow2b_from_type => message.headers['x-flow2b-from-type']&.last,
+          :flow2b_from_company => message.headers['x-flow2b-from-company']&.last,
           :html_body => message.html_body,
           :attachment_quantity => message.attachments.size
         }
