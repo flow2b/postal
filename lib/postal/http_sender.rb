@@ -77,6 +77,7 @@ module Postal
           :from => message.headers['from']&.last,
           :date => message.headers['date']&.last,
           :in_reply_to => message.headers['in-reply-to']&.last,
+          :reply_to => message.headers['reply-to']&.last,
           :references => message.headers['references']&.last,
           :list_unsubscribe => message.headers['list-unsubscribe']&.last,
           :flow2b_workspace => message.headers['x-flow2b-workspace']&.last,
